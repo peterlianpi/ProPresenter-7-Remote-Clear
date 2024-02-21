@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  Pressable,
+} from 'react-native';
 import {useProPresenterData} from '../../libs/ProPresenterDataProvider';
 import {connectWebSocket} from '../../libs/ProPresenterConnection';
 
@@ -75,12 +82,27 @@ const LoginPage = () => {
         onChangeText={setPassword}
       />
       {connectionError && <Text style={styles.error}>{connectionError}</Text>}
-      <Button title="Authenticate" onPress={handleAuthenticate} />
+      <Pressable style={styles.button} onPress={handleAuthenticate}>
+        <Text style={styles.text}>Authenticate</Text>
+      </Pressable>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  text: {
+    color: 'white',
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: 40,
+    paddingVertical: 10,
+    paddingHorizontal: 32,
+    borderRadius: 8,
+    backgroundColor: '#111aff',
+  },
   container: {
     position: 'relative',
     flex: 1,
@@ -120,6 +142,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 10,
   },
+
   error: {
     textAlign: 'center',
     color: 'red',
