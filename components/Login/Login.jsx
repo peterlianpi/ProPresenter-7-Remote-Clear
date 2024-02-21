@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { useProPresenterData } from '../../libs/ProPresenterDataProvider';
-import { connectWebSocket } from '../../libs/ProPresenterConnection';
+import React, {useEffect, useState} from 'react';
+import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
+import {useProPresenterData} from '../../libs/ProPresenterDataProvider';
+import {connectWebSocket} from '../../libs/ProPresenterConnection';
 
 const LoginPage = () => {
   const {
@@ -29,7 +29,7 @@ const LoginPage = () => {
         setWs,
         setMessage,
         handleAction,
-        handleWebSocketClose
+        handleWebSocketClose,
       );
     }
   }, [host]);
@@ -54,6 +54,13 @@ const LoginPage = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login Page</Text>
+      <View style={styles.notificationContainer}>
+        {connected ? (
+          <View style={[styles.notificationDot, {backgroundColor: 'green'}]} />
+        ) : (
+          <View style={[styles.notificationDot, {backgroundColor: 'red'}]} />
+        )}
+      </View>
       <TextInput
         style={styles.input}
         placeholder="hostname or ip:port"
@@ -75,16 +82,33 @@ const LoginPage = () => {
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     flex: 1,
+    maxWidth: 320,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
+  notificationContainer: {
+    position: 'relative',
+    alignItems: 'center',
+    width: '100%',
+    justifyContent: 'center',
+    marginTop: 8,
+  },
+  notificationDot: {
+    position: 'absolute',
+    width: 20,
+    height: 20,
+    borderRadius: 20,
+    top: 10,
+    right: 10,
+  },
   title: {
-    width:150,
+    width: 150,
     fontSize: 24,
     fontWeight: '900',
-    textAlign:'center',
+    textAlign: 'center',
     marginBottom: 20,
   },
   input: {
@@ -97,7 +121,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   error: {
-    textAlign:'center',
+    textAlign: 'center',
     color: 'red',
     marginBottom: 10,
   },

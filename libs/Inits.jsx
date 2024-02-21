@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import ClearAll from "../components/ClearAll/ClearAll";
-import LoginPage from "../components/Login/Login";
-import DataManager from "./DataManager";
-import { useProPresenterData } from "./ProPresenterDataProvider";
+import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import ClearAll from '../components/ClearAll/ClearAll';
+import LoginPage from '../components/Login/Login';
+import {useProPresenterData} from './ProPresenterDataProvider';
 
 const Inits = () => {
   const {
@@ -25,7 +24,7 @@ const Inits = () => {
 
   const [autoConnected, setAutoConnected] = useState(false);
   const [initialMessage, setInitialMessage] = useState(null);
-  const password = "control";
+  const password = 'control';
 
   useEffect(() => {
     // Function to connect WebSocket when component mounts
@@ -66,7 +65,7 @@ const Inits = () => {
     // Set authenticated and fetchData to true after successful authentication
     if (connected && webSocketMessage && webSocketMessage.authenticated === 1) {
       // Save initial WebSocket message value for passing to LoginPage
-      setInitialMessage((prevMessage) => prevMessage || webSocketMessage);
+      setInitialMessage(prevMessage => prevMessage || webSocketMessage);
       setIsAuthenticated(true);
       setFetchData(true);
     }
@@ -87,11 +86,9 @@ const Inits = () => {
     <View style={styles.container}>
       <View style={styles.notificationContainer}>
         {connected && initialMessage && initialMessage.authenticated === 1 ? (
-          <View
-            style={[styles.notificationDot, { backgroundColor: "green" }]}
-          />
+          <View style={[styles.notificationDot, {backgroundColor: 'green'}]} />
         ) : (
-          <View style={[styles.notificationDot, { backgroundColor: "red" }]} />
+          <View style={[styles.notificationDot, {backgroundColor: 'red'}]} />
         )}
       </View>
       {connected && initialMessage && initialMessage.authenticated === 1 && (
@@ -108,24 +105,24 @@ const Inits = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 30,
   },
   loginContainer: {
     width: 320,
     height: 480,
-    justifyContent: "center",
+    justifyContent: 'center',
     borderRadius: 8,
   },
   notificationContainer: {
-    position: "relative",
-    alignItems: "center",
-    justifyContent: "center",
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 8,
   },
   notificationDot: {
-    position: "absolute",
+    position: 'absolute',
     width: 150,
     height: 6,
     borderRadius: 4,

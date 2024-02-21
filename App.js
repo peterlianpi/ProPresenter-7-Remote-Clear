@@ -1,8 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
-import { ProPresenterDataContextProvider } from "./libs/ProPresenterDataProvider";
-import Inits from "./libs/Inits";
-import Center from "./components/Center";
+import {StyleSheet, View} from 'react-native';
+import {ProPresenterDataContextProvider} from './libs/ProPresenterDataProvider';
+import Inits from './libs/Inits';
+import Center from './components/Center';
 
 export default function App() {
   return (
@@ -10,8 +9,7 @@ export default function App() {
       <View style={styles.container}>
         <Center>
           <Inits />
-          </Center>
-        <StatusBar style="auto" />
+        </Center>
       </View>
     </ProPresenterDataContextProvider>
   );
@@ -20,8 +18,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
